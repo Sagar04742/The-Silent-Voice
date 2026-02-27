@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TSV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3/drawing_utils.js"></script>
+</head>
+<body class="dark">
+<div class="app">
+  <div class="left-panel">
+    <div class="top-bar">
+      <h1>The Silent Voice</h1>
+      <div class="controls">
+        <button id="themeToggle">🌓 Theme</button>
+      </div>
+    </div>
+    
+    <div class="privacy">🔒 Local Privacy Mode Active</div>
+
+    <div class="video-wrapper">
+      <video id="video" style="display:none"></video>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="output-card">
+      <div class="output-grid">
+        <div>
+          <h3>Detected Gesture</h3>
+          <p class="big-text" id="gesture">Waiting...</p>
+        </div>
+        <div>
+          <h3>Generated Sentence</h3>
+          <p class="sentence-text" id="sentence">-</p>
+        </div>
+      </div>
+      <div class="progress-container"><div class="progress-bar" id="confidenceBar"></div></div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="history-header">
+      <h2>📜 History</h2>
+      <button id="clearHistory" class="clear-btn">Clear All</button>
+    </div>
+    <div id="historyList"></div>
+  </div>
+</div>
+
+<div id="emergency" class="hidden">
+    <div>
+      🚨 EMERGENCY ALERT 🚨
+      <br>
+      <button onclick="stopSiren()" style="padding:15px 30px; font-size:1.5rem; margin-top:20px; cursor:pointer; border-radius:10px;">RESET ALARM</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

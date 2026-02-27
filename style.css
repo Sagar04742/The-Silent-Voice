@@ -1,0 +1,99 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+}
+
+body.dark { background: #0f172a; color: #f8fafc; }
+body.light { background: #f1f5f9; color: #0f172a; }
+
+.app { display: flex; height: 100vh; }
+
+.left-panel { flex: 2; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.right-panel { 
+  flex: 0.8; 
+  padding: 2rem; 
+  background: rgba(0,0,0,0.05); 
+  border-left: 1px solid rgba(128,128,128,0.2);
+  overflow-y: auto;
+}
+
+.top-bar { display: flex; justify-content: space-between; align-items: center; }
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 4/3;
+  margin: 0 auto;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.output-card {
+  background: rgba(128, 128, 128, 0.1);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.output-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.big-text { font-size: 2rem; color: #3b82f6; font-weight: 800; }
+
+.progress-container {
+  width: 100%;
+  height: 10px;
+  background: #334155;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+#emergency {
+  position: fixed;
+  inset: 0;
+  background: rgba(220, 38, 38, 0.95);
+  color: white;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  animation: pulse 0.5s infinite alternate;
+}
+
+.hidden { display: none !important; }
+
+@keyframes pulse {
+  from { opacity: 1; }
+  to { opacity: 0.7; }
+}
+
+.history-item {
+  padding: 10px;
+  border-bottom: 1px solid rgba(128,128,128,0.2);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .app { flex-direction: column; }
+  .right-panel { border-left: none; border-top: 1px solid #ccc; }
+}
