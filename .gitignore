@@ -1,5 +1,18 @@
-node_modules
+# dependencies
+node_modules/
+
+# secrets (keep .env.example tracked)
 .env
+.env.*
+!.env.example
+
+# build output
+dist/
+.vercel/
+
+# logs & misc
 *.log
 *.err
-dist
+.DS_Store
+Thumbs.db
+.vscode/
