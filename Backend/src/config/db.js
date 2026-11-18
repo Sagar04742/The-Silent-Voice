@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 
 async function connectToDb() {
   try {
-    mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to DB");
   } catch (err) {
-    console.log("Error while connecting to Db");
+    // Keep the API alive so guest mode (no accounts) still works in the UI.
+    console.error("Error while connecting to DB:", err.message);
   }
 }
 

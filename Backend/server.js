@@ -1,11 +1,15 @@
-import 'dotenv/config'
-import dns from 'dns'
-dns.setServers(["8.8.8.8", "1.1.1.1"])
+import "dotenv/config";
+import dns from "dns";
+// Some networks block SRV lookups needed by mongodb+srv:// URIs; use public DNS.
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
 import app from "./src/app.js";
-import connectToDb from './src/config/db.js';
+import connectToDb from "./src/config/db.js";
 
-connectToDb()
+const PORT = process.env.PORT || 3000;
 
-app.listen(process.env.PORT,()=>{
-    console.log(`Server is running at PORT ${300}`);
-})
+await connectToDb();
+
+app.listen(PORT, () => {
+  console.log(`Server is running at PORT ${PORT}`);
+});

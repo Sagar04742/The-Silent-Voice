@@ -1,8 +1,11 @@
 import express from "express";
-import { register } from "../controllers/auth.controller.js";
+import { register, login, me } from "../controllers/auth.controller.js";
+import { requireAuth } from "../middleware/auth.middleware.js";
 
 const authRouter = express.Router();
 
 authRouter.post("/register", register);
+authRouter.post("/login", login);
+authRouter.get("/me", requireAuth, me);
 
 export default authRouter;
